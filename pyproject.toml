@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "protect-folder"
+version = "1.0.0"
+description = "Protect arbitrary directories from local AI coding agents (Linux)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = []
+
+[project.scripts]
+protect-folder = "protect_folder.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+protect_folder = ["adapters/opencode_plugin/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]
+addopts = "-ra"
+markers = [
+  "privileged: needs root and PF_PRIVILEGED_TESTS=1 (real chown/chmod); never in the default run",
+  "srt: needs a working Anthropic Sandbox Runtime (srt + bwrap)",
+  "live_agent: runs a real coding agent (uses network / account quota)",
+  "slow: long-running test",
+]

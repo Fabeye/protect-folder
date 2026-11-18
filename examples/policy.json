@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "inspection_mode": "balanced",
+  "default_profile": null,
+  "profiles": {
+    "claude-with-oauth-refresh": {
+      "allowedDomains": ["api.anthropic.com", "console.anthropic.com"]
+    },
+    "opencode-anthropic": {
+      "allowedDomains": ["opencode.ai", "api.anthropic.com"]
+    },
+    "opencode-ollama-on-another-port": {
+      "allowedDomains": ["127.0.0.1:11500"],
+      "relays": [{"listen": "127.0.0.1:11500", "upstream": "127.0.0.1:11500"}]
+    },
+    "codex-api-key": {
+      "allowedDomains": ["api.openai.com"]
+    }
+  }
+}
